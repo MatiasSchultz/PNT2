@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de Películas</title>
+  </head>
+  <body>
+    <h1>Lista de Películas</h1>
+    <p>Ordenar por:</p>
+    <button onclick="ordenarAscendente()">Ascendente</button>
+    <button onclick="ordenarDescendente()">Descendente</button>
+    <br><br>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Año de Estreno</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tabla-peliculas">
+        
+      </tbody>
+    </table>
+    <br><br>
+    <label>Eliminar por ID:</label>
+    <input type="text" id="id-pelicula">
+    <button onclick="eliminarPelicula()">Eliminar</button>
+    <br><br>
+    <button onclick="mostrarPeliculas()">Mostrar todas las películas</button>
+    
+    <script src="codigo.js"></script>
+  </body>
+</html>
