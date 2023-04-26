@@ -22,9 +22,6 @@ export default {
         this.playerAStamina = Math.max(this.playerAStamina - damage, 0);
       }
       this.toggleActivePlayer();
-
-      console.log(this.playerAStamina)
-      console.log(this.playerBStamina)
     },
     playerHeal(player, healing) {
       if (player === "A") {
@@ -33,18 +30,21 @@ export default {
         this.playerBStamina = Math.min(this.playerBStamina + healing, 100);
       }
       this.toggleActivePlayer();
-      console.log(this.playerAStamina)
-      console.log(this.playerBStamina)
     },
     playerSwap(player) {
+      let tempStamina;
+
       if (player === "A") {
-        this.playerAStamina = 100 - this.playerAStamina;
+        tempStamina = this.playerAStamina;
+        this.playerAStamina = this.playerBStamina;
+        this.playerBStamina = tempStamina;
       } else {
-        this.playerBStamina = 100 - this.playerBStamina;
+        tempStamina = this.playerBStamina;
+        this.playerBStamina = this.playerAStamina;
+        this.playerAStamina = tempStamina;
       }
+      
       this.toggleActivePlayer();
-      console.log(this.playerAStamina)
-      console.log(this.playerBStamina)
     },
     toggleActivePlayer() {
       if (this.activePlayer === "A") {
@@ -59,8 +59,11 @@ export default {
 
 <template>
   <div>
+    
     <PlayerA v-if="activePlayer === 'A'" :stamina="playerAStamina" @attack="playerAttack" @heal="playerHeal" @swap="playerSwap" />
+    <p v-if="activePlayer === 'A'">Stamina:{{this.playerAStamina}}</p>
     <PlayerB v-if="activePlayer === 'B'" :stamina="playerBStamina" @attack="playerAttack" @heal="playerHeal" @swap="playerSwap" />
+    <p v-if="activePlayer === 'B'">Stamina:{{this.playerBStamina}}</p>
   </div>
 </template>
 

@@ -1,10 +1,9 @@
 <template>
   <div>
     <h2>{{ name }}</h2>
-    <p>Stamina: {{ stamina }}</p>
     <button @click="attack" >Atacar</button>
     <button @click="heal" >Curar</button>
-    <button @click="swap" v-if="canSwap">Swap</button>
+    <button @click="swap" :disabled=!canSwap>Swap</button>
   </div>
 </template>
 
